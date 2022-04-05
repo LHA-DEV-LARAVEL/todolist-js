@@ -55,16 +55,25 @@ button.addEventListener("click", function (e) {
     const cardText = document.createElement("p");
     cardText.setAttribute("class", "card-text");
     cardText.innerHTML = formDescription;
+    const cardButton = document.createElement("button");
+    cardButton.innerHTML = "Supprimer";
+    cardButton.setAttribute("class", "btn btn-danger");
+    cardButton.addEventListener("click", function (ev) {
+      const parentBtn = ev.target.parentNode.parentNode;
+      parentBtn.parentNode.removeChild(parentBtn);
+      ev.preventDefault
+    });
 
     divCardBody.appendChild(cardTitre);
     divCardBody.appendChild(cardText);
+    divCardBody.appendChild(cardButton);
     divCard.appendChild(divCardBody);
 
     const cardInner = document.getElementById("card-inner");
     cardInner.appendChild(divCard);
 
     // Retirer le formulaire
-    content.removeChild(form)
+    content.removeChild(form);
 
     event.preventDefault();
   });
@@ -77,4 +86,5 @@ button.addEventListener("click", function (e) {
 
   // Ajouter mes champs au content
   content.appendChild(form);
+  e.preventDefault();
 });
